@@ -1,0 +1,50 @@
+[
+    {
+        "_id": "0282e0e58a5c404fbd15261f11c2ab6a",
+        "category_id": "01",
+        "rating": {
+            "number": 4.6,
+            "badge": "Excellent"
+        },
+        "price": 209,
+        "title": "The Subtle Art of Not Giving a F*ck",
+        "author": {
+            "name": "Mark Manson",
+            "published_date": "September 13, 2016"
+        },
+        "image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1651074858l/60892816._SY475_.jpg",
+        "details": "The Subtle Art of Not Giving a F*ck: A Counterintuitive Approach to Living a Good Life is a 2016 nonfiction self-help book by American blogger and author Mark Manson."
+    },
+    {
+        "_id": "0282e0e58a5c404fbd15261f11c2ab6a",
+        "category_id": "01",
+        "rating": {
+            "number": 4.7,
+            "badge": "Excellent"
+        },
+        "price": 409,
+        "title": "HOW TO WIN FRIENDS and INFLUENCE PEOPLE",
+        "author": {
+            "name": "Dale Carnegie",
+            "published_date": "October 1936"
+        },
+        "image_url": "https://static-01.daraz.com.bd/p/ede5bbac73297b33d25590d74915b6be.png",
+        "details": "How to Win Friends and Influence People is a 1936 self-help book written by Dale Carnegie. Over 30 million copies have been sold worldwide, making it one of the best-selling books of all time. Carnegie had been conducting business education courses in New York since 1912."
+    },
+    {
+        "_id": "0282e0e58a5c404fbd15261f11c2ab6a",
+        "category_id": "01",
+        "rating": {
+            "number": 3.9,
+            "badge": "Good"
+        },
+        "price": 209,
+        "title": "The Alchemist",
+        "author": {
+            "name": "Paulo Coelho",
+            "published_date": "1988"
+        },
+        "image_url": "https://jameskennedymonash.files.wordpress.com/2013/06/the-alchemist-paulo-coelho.jpg",
+        "details": "The Alchemist is a novel by Brazilian author Paulo Coelho which was first published in 1988. Originally written in Portuguese, it became a widely translated international bestseller"
+    }
+]
