@@ -4,6 +4,7 @@ import Blogs from "../../Pages/Blogs/Blogs";
 import Category from "../../Pages/Categories/Category/Category";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
+import NotFoundPage from "../../Pages/NotFoundPage/NotFoundPage";
 import SignUp from "../../Pages/SignUp/SignUp";
 
 const router = createBrowserRouter([
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
                 element: <Category></Category>,
                 loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
             },
+            {
+                path: "*",
+                element: <NotFoundPage></NotFoundPage>
+            }
         ]
     },
     // {
