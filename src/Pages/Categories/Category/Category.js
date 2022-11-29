@@ -1,23 +1,21 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
+import BooksCard from '../BooksCard/BooksCard';
 
-const Category = ({ cat }) => {
-    const { name } = cat;
+const Category = () => {
+    const books = useLoaderData();
     return (
-        <div className="card shadow-xl">
-            <div className="card-body text-center">
-                <h2 className="text-2xl text-secondary font-bold text-center">{name}</h2>
-                {/* <p>{slots.length > 0 ? slots[0] : 'Try Another day'}</p> */}
-                {/* <p>{slots.length} {slots.length > 1 ? 'spaces' : 'space'} available</p> */}
-                {/* <p><small>Price: ${price}</small></p> */}
-                <div className="card-actions justify-center">
-                    <label
-                        // disabled={slots.length === 0}
-                        htmlFor="booking-modal"
-                        className="btn btn-primary text-white"
-                    // onClick={() => setTreatment(appointmentOption)}
-                    >Show All</label>
-                </div>
+        <div>
+            <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6'>
+                {
+                    books.map(book => <BooksCard
+                        key={book._id}
+                        book={book}
+
+                    ></BooksCard>)
+                }
             </div>
+
         </div>
     );
 };

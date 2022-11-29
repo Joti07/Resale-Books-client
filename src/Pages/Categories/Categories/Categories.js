@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import Category from './Category/Category';
+
+import CategoryCard from '../CategoryCard/CategoryCard';
 
 const Categories = () => {
+
     const [category, setCategory] = useState([]);
     useEffect(() => {
-        fetch('categories.json')
+        fetch('http://localhost:5000/categories')
             .then(res => res.json())
             .then(data => setCategory(data))
     }, [])
@@ -15,10 +17,12 @@ const Categories = () => {
             {/* <p className='text-center text-secondary font-bold'>Available Appointments on {format(selectedDate, 'PP')}</p> */}
             <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6'>
                 {
-                    category.map(cat => <Category
-                        key={cat.id}
+                    category.map(cat => <CategoryCard
+                        key={cat._id}
                         cat={cat}
-                    ></Category>)
+
+
+                    ></CategoryCard>)
                 }
             </div>
             {
