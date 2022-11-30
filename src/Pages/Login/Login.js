@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -11,6 +12,14 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
+    const [loginUserEmail, setLoginUserEmail] = useState('');
+    const [token] = useToken(loginUserEmail);
+
+    if (token) {
+        navigate(from, { replace: true });
+    }
+
+    //google signup
     const googleProvider = new GoogleAuthProvider();
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
@@ -25,14 +34,21 @@ const Login = () => {
 
     }
 
+    const [currentValue, setCurrentValue] = useState('buyer');
+    const changeUser = (selectUser) => {
+        console.log(selectUser)
+        setCurrentValue(selectUser)
+    }
+
+
     const handleLogin = data => {
         console.log(data);
-
         setLoginError('');
         signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
+                setLoginUserEmail(data.email);
                 navigate(from, { replace: true });
                 //    setLoginUserEmail(data.email);
             })
@@ -46,22 +62,39 @@ const Login = () => {
         <div>
             <div className='h-[800px] flex justify-center items-center'>
                 <div className='w-96 p-7'>
-                    <div className='flex gap-6 px-20'>
-                        <div>
-
-                            <input type="radio" name="radio-2" className="radio radio-primary" />
-                            <label htmlFor="">Seller </label>
-                        </div>
-                        <div>
-
-                            <input type="radio" name="radio-2" className="radio radio-primary" checked />
-                            <label htmlFor="">Buyer </label>
-                        </div>
-                    </div>
-
-
-                    <h2 className='text-xl text-center'>Login</h2>
+                    <h2 className='text-xl text-center py-7'>Login</h2>
                     <form onSubmit={handleSubmit(handleLogin)}>
+                        <div
+                            className='flex gap-6 px-20'
+
+                        >
+
+                            <label htmlFor="">
+                                <input type="radio" name="radio-2"
+                                    value="seller"
+                                    className="radio radio-primary"
+                                    checked={currentValue === 'seller'}
+                                    {...register("role", {
+                                        required: "User Role is Required"
+                                    })}
+                                    onChange={(event) => changeUser(event.target.value)}
+
+                                />
+                                Seller</label>
+
+                            <label htmlFor="">
+                                <input type="radio" name="radio-2"
+                                    value="buyer"
+                                    className="radio radio-primary"
+                                    checked={currentValue === 'buyer'}
+                                    {...register("role", {
+                                        required: "User Role is Required"
+                                    })}
+                                    onChange={(event) => changeUser(event.target.value)}
+                                />
+                                Buyer </label>
+                        </div>
+
                         <div className="form-control w-full max-w-xs">
                             <label className="label"> <span className="label-text">Email</span></label>
                             <input type="text"
@@ -71,14 +104,14 @@ const Login = () => {
                                 className="input input-bordered w-full max-w-xs" />
                             {errors.email && <p className='text-red-600'>{errors.email?.message}</p>}
                         </div>
-                        <div className="form-control w-full max-w-xs">
+                        <div className="form-control w-full max-w-xs py-7">
                             <label className="label"> <span className="label-text">Password</span></label>
                             <input type="password"
                                 {...register("password", {
                                     required: "Password is required",
                                     minLength: { value: 6, message: 'Password must be 6 characters or longer' }
                                 })}
-                                className="input input-bordered w-full max-w-xs" />
+                                className="input input-bordered w-full max-w-xs " />
                             {/* <label className="label"> <span className="label-text">Forget Password?</span></label> */}
                             {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
                         </div>

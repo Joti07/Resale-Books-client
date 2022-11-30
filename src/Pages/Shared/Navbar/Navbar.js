@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import useAdmin from '../../../hooks/useAdmin';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [isAdmin] = useAdmin(user?.email);
+    console.log(isAdmin);
 
     const handleLogOut = () => {
         logOut()
@@ -13,15 +16,20 @@ const Navbar = () => {
 
     const menuItems = <React.Fragment>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/categories">Categories</Link></li>
+        {/* <li><Link to="/categories">Categories</Link></li> */}
         <li><Link to="/blogs">Blogs</Link></li>
+        {
+            isAdmin && <>
+                <li><Link to="/dashboard">Dashboard</Link></li>
+            </>
+        }
         {user?.uid ?
             <>
-                {/* <li><Link to="/dashboard">Dashboard</Link></li> */}
                 <li><button onClick={handleLogOut}>Sign out</button></li>
             </>
             : <li><Link to="/login">Login</Link></li>
         }
+
     </React.Fragment>
 
     return (
