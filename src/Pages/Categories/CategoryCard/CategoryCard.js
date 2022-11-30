@@ -12,17 +12,9 @@ const CategoryCard = ({ cat }) => {
                 {/* <p>{slots.length} {slots.length > 1 ? 'spaces' : 'space'} available</p> */}
                 {/* <p><small>Price: ${price}</small></p> */}
                 <div className="card-actions justify-center">
-
-
                     <Link to={`/category/${_id}`}>
                         <button className="btn btn-primary">Show All </button>
                     </Link>
-                    {/* <label
-                            // disabled={slots.length === 0}
-                            htmlFor="booking-modal"
-                            className="btn btn-primary text-white"
-                        // onClick={() => setTreatment(appointmentOption)}
-                        >Show All</label> */}
                 </div>
             </div>
         </div>
