@@ -2,11 +2,16 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import useAdmin from '../../../hooks/useAdmin';
+import useBuyer from '../../../hooks/useBuyer';
+import useSeller from '../../../hooks/useSeller';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const [isAdmin] = useAdmin(user?.email);
-    console.log(isAdmin);
+    const [isSeller] = useSeller(user?.email);
+    const [isBuyer] = useBuyer(user?.email);
+
+    // console.log(isSeller);
 
     const handleLogOut = () => {
         logOut()
@@ -20,9 +25,24 @@ const Navbar = () => {
         <li><Link to="/blogs">Blogs</Link></li>
         {
             isAdmin && <>
-                <li><Link to="/dashboard">Dashboard</Link></li>
+                <li><Link to="/admindashboard">Dashboard</Link></li>
             </>
         }
+        {
+            isBuyer && <>
+                <li><Link to="/buyerdashboard">Dashboard</Link></li>
+            </>
+        }
+        {
+            isSeller && <>
+                <li><Link to="/sellerdashboard">Dashboard</Link></li>
+            </>
+        }
+        {/* {
+            <>
+                <li><Link to="/addproduct">Add Product</Link></li>
+            </>
+        } */}
         {user?.uid ?
             <>
                 <li><button onClick={handleLogOut}>Sign out</button></li>

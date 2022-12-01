@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import useToken from '../../hooks/useToken';
+// import Navbar from '../Shared/Navbar/Navbar';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -14,7 +15,7 @@ const Login = () => {
     const from = location.state?.from?.pathname || '/';
     const [loginUserEmail, setLoginUserEmail] = useState('');
     const [token] = useToken(loginUserEmail);
-
+    // const [currentValue, setCurrentValue] = useState('buyer');
     if (token) {
         navigate(from, { replace: true });
     }
@@ -34,20 +35,21 @@ const Login = () => {
 
     }
 
-    const [currentValue, setCurrentValue] = useState('buyer');
-    const changeUser = (selectUser) => {
-        console.log(selectUser)
-        setCurrentValue(selectUser)
-    }
+
+    // const changeUser = (selectUser) => {
+    //     //  console.log(selectUser)
+    //     setCurrentValue(selectUser)
+    // }
 
 
     const handleLogin = data => {
-        console.log(data);
+
+
         setLoginError('');
         signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                // console.log(user);
+                //console.log(user);
                 setLoginUserEmail(data.email);
                 navigate(from, { replace: true });
                 //    setLoginUserEmail(data.email);
@@ -56,6 +58,7 @@ const Login = () => {
                 console.log(error.message)
                 setLoginError(error.message);
             });
+        // console.log(currentValue)
     }
 
     return (
@@ -69,7 +72,7 @@ const Login = () => {
 
                         >
 
-                            <label htmlFor="">
+                            {/* <label htmlFor="">
                                 <input type="radio" name="radio-2"
                                     value="seller"
                                     className="radio radio-primary"
@@ -80,9 +83,9 @@ const Login = () => {
                                     onChange={(event) => changeUser(event.target.value)}
 
                                 />
-                                Seller</label>
+                                Seller</label> */}
 
-                            <label htmlFor="">
+                            {/* <label htmlFor="">
                                 <input type="radio" name="radio-2"
                                     value="buyer"
                                     className="radio radio-primary"
@@ -92,7 +95,7 @@ const Login = () => {
                                     })}
                                     onChange={(event) => changeUser(event.target.value)}
                                 />
-                                Buyer </label>
+                                Buyer </label> */}
                         </div>
 
                         <div className="form-control w-full max-w-xs">
@@ -128,6 +131,7 @@ const Login = () => {
                     >CONTINUE WITH GOOGLE</button>
                 </div>
             </div>
+
         </div>
     );
 };

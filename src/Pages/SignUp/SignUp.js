@@ -33,14 +33,14 @@ const SignUp = () => {
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
                 toast('User Created Successfully.')
                 const userInfo = {
                     displayName: data.name
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        saveUser(data.name, data.email, data.role);
+                        saveUser(data.name, data.email);
                     })
                     .catch(err => console.log(err));
             })
@@ -51,9 +51,9 @@ const SignUp = () => {
     }
 
 
-    const saveUser = (name, email, role) => {
-        const user = { name, email, role };
-        console.log(role);
+    const saveUser = (name, email) => {
+        const user = { name, email };
+        // console.log(role);
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {

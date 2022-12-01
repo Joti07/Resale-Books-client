@@ -9,7 +9,9 @@ import Login from "../../Pages/Login/Login";
 import NotFoundPage from "../../Pages/NotFoundPage/NotFoundPage";
 import SignUp from "../../Pages/SignUp/SignUp";
 import AdminRoute from "../AdminRoute/AdminRoute";
+import BuyerRoute from "../Buyer/Buyer";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import SellerRoute from "../SellerRoute/SellerRoute";
 
 const router = createBrowserRouter([
     {
@@ -44,7 +46,7 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path: '/dashboard',
+        path: '/admindashboard',
         element: <AdminRoute><AllUsers></AllUsers></AdminRoute>,
         children: [
             // {
@@ -55,20 +57,39 @@ const router = createBrowserRouter([
             //     path: '/dashboard/allusers',
             //     element: <Home></Home>
             // }
-            //     {
-            //         path: '/dashboard/adddoctor',
-            //         element: <AdminRoute><AddDoctor></AddDoctor></AdminRoute>
-            //     },
-            //     {
-            //         path: '/dashboard/managedoctors',
-            //         element: <AdminRoute><ManageDoctors></ManageDoctors></AdminRoute>
-            //     },
-            //     {
-            //         path: '/dashboard/payment/:id',
 
-            //         element: <AdminRoute><Payment></Payment></AdminRoute>,
-            //         loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
-            //     },
+        ]
+
+    },
+    {
+        path: '/sellerdashboard',
+        element: <SellerRoute><AllUsers></AllUsers></SellerRoute>,
+        children: [
+            // {
+            //     path: '/dashboard',
+            //     element: <Home></Home>
+            // },
+            // {
+            //     path: '/dashboard/allusers',
+            //     element: <Home></Home>
+            // }
+
+        ]
+
+    },
+    {
+        path: '/buyerdashboard',
+        element: <BuyerRoute><AllUsers></AllUsers></BuyerRoute>,
+        children: [
+            // {
+            //     path: '/dashboard',
+            //     element: <Home></Home>
+            // },
+            // {
+            //     path: '/dashboard/allusers',
+            //     element: <Home></Home>
+            // }
+
         ]
 
     }
