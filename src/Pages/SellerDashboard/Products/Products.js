@@ -69,35 +69,36 @@ const Product = ({ data, refetch }) => {
     //         });
     // };
     const HandleAdvertiseBtn = () => {
-        //     console.log("ggwp");
-        //     fetch(`https://laptop-bikroy-server.vercel.app/allAdvertisedProducts`, {
-        //         method: "POST",
-        //         headers: {
-        //             "content-type": "application/json",
-        //             authorization: `bearer ${localStorage.getItem(`accessToken`)}`,
-        //         },
-        //         body: JSON.stringify(data),
-        //     })
-        //         .then((res) => res.json())
-        //         .then((result) => {
-        //             console.log(result);
-        //             fetch(
-        //                 `https://laptop-bikroy-server.vercel.app/allProducts/${user.email}/${_id}`,
-        //                 {
-        //                     method: "PUT",
-        //                     headers: {
-        //                         authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        //                     },
-        //                 }
-        //             )
-        //                 .then((res) => res.json())
-        //                 .then((data) => {
-        //                     if (data.modifiedCount > 0) {
-        //                         toast.success("Product Advertised");
-        //                         refetch();
-        //                     }
-        //                 });
-        //         });
+
+        fetch(`http://localhost:5000/allAdvertisedProducts`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+                // authorization: `bearer ${localStorage.getItem(`accessToken`)}`,
+            },
+            body: JSON.stringify(data),
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                toast.success("Product add in Advertised section");
+                // console.log(result);
+                // fetch(
+                //     `https://laptop-bikroy-server.vercel.app/allProducts/${user.email}/${_id}`,
+                //     {
+                //         method: "PUT",
+                //         headers: {
+                //             authorization: `bearer ${localStorage.getItem("accessToken")}`,
+                //         },
+                //     }
+                // )
+                //     .then((res) => res.json())
+                //     .then((data) => {
+                //         if (data.modifiedCount > 0) {
+                //             toast.success("Product Advertised");
+                //             refetch();
+                //         }
+                //     });
+            });
     };
 
     // .................................
