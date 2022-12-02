@@ -70,7 +70,7 @@ const Product = ({ data, refetch }) => {
     // };
     const HandleAdvertiseBtn = () => {
 
-        fetch(`http://localhost:5000/allAdvertisedProducts`, {
+        fetch(`https://recycled-books-server.vercel.app/allAdvertisedProducts`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",

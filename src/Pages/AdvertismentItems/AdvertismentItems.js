@@ -15,7 +15,7 @@ const AdvertisementItems = () => {
         queryFn: async () => {
             try {
                 const res = await fetch(
-                    `http://localhost:5000/allAdvertisedProducts`,
+                    `https://recycled-books-server.vercel.app/allAdvertisedProducts`,
                     {
                         headers: {
                             authorization: `bearer ${localStorage.getItem(`accessToken`)}`,
