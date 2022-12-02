@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../contexts/AuthProvider";
-import BookingModal from "../BookingModal/BookingModal";
+// import BookingModal from "../BookingModal/BookingModal";
 
 
 const Product = ({ data, refetch }) => {
@@ -20,7 +20,7 @@ const Product = ({ data, refetch }) => {
         setDeletingProduct(null);
     };
     const handleDeleteProduct = (id, name) => {
-        fetch(`http://localhost:5000/booksdetails/${user.email}/${id}`, {
+        fetch(`https://recycled-books-server.vercel.app/booksdetails/${user.email}/${id}`, {
             method: "DELETE",
             headers: {
                 authorization: `bearer ${localStorage.getItem(`accesstoken`)}`,
@@ -36,7 +36,7 @@ const Product = ({ data, refetch }) => {
     };
     // const handleDeleteProduct = (product) => {
     //     fetch(
-    //         `http://localhost:5000/booksdetails/${user.email}/${_id}`,
+    //         `https://recycled-books-server.vercel.app/booksdetails/${user.email}/${_id}`,
     //         {
     //             method: "DELETE",
     //             headers: {

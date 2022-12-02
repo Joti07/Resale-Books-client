@@ -57,7 +57,7 @@ const AddProduct = () => {
                         status: "available",
                     };
 
-                    fetch(`http://localhost:5000/books`, {
+                    fetch(`https://recycled-books-server.vercel.app/books`, {
                         method: "POST",
                         headers: {
                             "content-type": "application/json",
@@ -69,7 +69,7 @@ const AddProduct = () => {
                         .then((result) => {
                             e.target.reset();
                             toast.success("Book Added Successfully");
-                            // fetch(`http://localhost:5000/books`, {
+                            // fetch(`https://recycled-books-server.vercel.app/books`, {
                             //     method: "POST",
                             //     headers: {
                             //         "content-type": "application/json",

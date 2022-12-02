@@ -6,6 +6,7 @@ import AllSellers from "../../Pages/AdminDashboard/AllSellers/AllSellers";
 import AllUsers from "../../Pages/AdminDashboard/AllUsers/AllUsers";
 import Dashboard from "../../Pages/AdminDashboard/Dashboard/Dashboard";
 import Blogs from "../../Pages/Blogs/Blogs";
+import MyOrder from "../../Pages/BuyerDashboard/MyOrder/MyOrder";
 import Category from "../../Pages/Categories/Category/Category";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
@@ -40,9 +41,9 @@ const router = createBrowserRouter([
                 element: <Blogs></Blogs>
             },
             {
-                path: '/category/:id',
+                path: '/category/:name',
                 element: <Category></Category>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({ params }) => fetch(`https://recycled-books-server.vercel.app/category/${params.name}`)
             },
             {
                 path: "*",
@@ -93,16 +94,16 @@ const router = createBrowserRouter([
     },
     {
         path: '/buyerdashboard',
-        element: <BuyerRoute><AllUsers></AllUsers></BuyerRoute>,
+        element: <BuyerRoute><AdminLayout></AdminLayout></BuyerRoute>,
         children: [
             // {
             //     path: '/dashboard',
             //     element: <Home></Home>
             // },
-            // {
-            //     path: '/dashboard/allusers',
-            //     element: <Home></Home>
-            // }
+            {
+                path: '/buyerdashboard/myorder',
+                element: <BuyerRoute><MyOrder></MyOrder></BuyerRoute>
+            }
 
         ]
 

@@ -8,7 +8,7 @@ const AllBuyers = () => {
     const [loading, setLoading] = useState(true);
     axios({
         method: "get",
-        url: `http://localhost:5000/users/buyers`,
+        url: `https://recycled-books-server.vercel.app/users/buyers`,
         responseType: "stream",
     }).then((data) => {
         const datas = JSON.parse(data.data);
@@ -21,7 +21,7 @@ const AllBuyers = () => {
     }
 
     const handleDeleteBuyers = (id, name) => {
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://recycled-books-server.vercel.app/users/${id}`, {
             method: "DELETE",
             headers: {
                 authorization: `bearer ${localStorage.getItem(`accesstoken`)}`,

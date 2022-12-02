@@ -12,7 +12,7 @@ const CategoryCard = ({ cat }) => {
                 {/* <p>{slots.length} {slots.length > 1 ? 'spaces' : 'space'} available</p> */}
                 {/* <p><small>Price: ${price}</small></p> */}
                 <div className="card-actions justify-center">
-                    <Link to={`/category/${_id}`}>
+                    <Link to={`/category/${name}`}>
                         <button className="btn btn-primary">Show All </button>
                     </Link>
                 </div>
