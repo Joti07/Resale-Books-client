@@ -81,7 +81,7 @@ const AddProduct = () => {
                             // })
                             //     .then((res) => res.json())
                             //     .then((data) => console.log(data));
-                            // navigate("/sellerdashboard/myProducts");
+                            navigate("/sellerdashboard/myProducts");
                         });
                 }
             });
