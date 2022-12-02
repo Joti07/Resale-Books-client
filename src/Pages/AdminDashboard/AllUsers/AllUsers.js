@@ -3,13 +3,14 @@ import React from 'react';
 import toast from 'react-hot-toast';
 
 const AllUsers = () => {
+
     const { data: users = [], refetch } = useQuery({
-        // queryKey: ['users'],
-        // queryFn: async () => {
-        //     const res = await fetch('http://localhost:5000/users');
-        //     const data = await res.json();
-        //     return data;
-        // }
+        queryKey: ['users'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/users');
+            const data = await res.json();
+            return data;
+        }
     });
 
 
@@ -45,13 +46,15 @@ const AllUsers = () => {
                     </thead>
                     <tbody>
                         {
-                            // users.map((user, i) => <tr key={user._id}>
-                            //     <th>{i + 1}</th>
-                            //     <td>{user.name}</td>
-                            //     <td>{user.email}</td>
-                            //     {/* <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td> */}
-                            //     <td><button className='btn btn-xs btn-danger'>Delete</button></td>
-                            // </tr>)
+                            users.map((user, i) => <tr key={user._id}>
+                                <th>{i + 1}</th>
+                                <>
+                                    <td>{user.name}</td>
+                                    <td>{user.email}</td>
+                                </>
+                                {/* <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td> */}
+                                <td><button className='btn btn-xs btn-danger'>Delete</button></td>
+                            </tr>)
                         }
 
                     </tbody>

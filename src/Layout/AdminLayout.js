@@ -4,7 +4,7 @@ import { AuthContext } from '../contexts/AuthProvider';
 import useAdmin from '../hooks/useAdmin';
 import Navbar from '../Pages/Shared/Navbar/Navbar';
 
-const DashboardLayout = () => {
+const AdminLayout = () => {
     const { user } = useContext(AuthContext);
     const [isAdmin] = useAdmin(user?.email)
     return (
@@ -18,12 +18,13 @@ const DashboardLayout = () => {
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
-                        <li><Link to="/dashboard">My Appointments</Link></li>
+                        <li><Link to="/dashboard">Dashboard</Link></li>
                         {
                             isAdmin && <>
-                                <li><Link to="/dashboard/allusers">All users</Link></li>
-                                {/* <li><Link to="/dashboard/adddoctor">Add A Doctor</Link></li>
-                                <li><Link to="/dashboard/managedoctors">Manage Doctors</Link></li> */}
+                                {/* <li><Link to="/admindashboard/allusers">All users</Link></li> */}
+                                <li><Link to="/admindashboard/allbuyers">All Buyers</Link></li>
+                                <li><Link to="/admindashboard/allseller">All Sellers</Link></li>
+
                             </>
                         }
 
@@ -35,4 +36,4 @@ const DashboardLayout = () => {
     );
 };
 
-export default DashboardLayout;
+export default AdminLayout;

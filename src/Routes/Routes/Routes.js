@@ -1,5 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
+import AdminLayout from "../../Layout/AdminLayout";
 import Main from "../../Layout/Main";
+import AllBuyers from "../../Pages/AdminDashboard/AllBuyers/AllBuyers";
+import AllSellers from "../../Pages/AdminDashboard/AllSellers/AllSellers";
 import AllUsers from "../../Pages/AdminDashboard/AllUsers/AllUsers";
 import Dashboard from "../../Pages/AdminDashboard/Dashboard/Dashboard";
 import Blogs from "../../Pages/Blogs/Blogs";
@@ -47,16 +50,20 @@ const router = createBrowserRouter([
     },
     {
         path: '/admindashboard',
-        element: <AdminRoute><AllUsers></AllUsers></AdminRoute>,
+        element: <AdminRoute><AdminLayout></AdminLayout></AdminRoute>,
         children: [
             // {
             //     path: '/dashboard',
             //     element: <Home></Home>
             // },
-            // {
-            //     path: '/dashboard/allusers',
-            //     element: <Home></Home>
-            // }
+            {
+                path: '/admindashboard/allbuyers',
+                element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
+            },
+            {
+                path: '/admindashboard/allseller',
+                element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
+            }
 
         ]
 
