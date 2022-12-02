@@ -42,7 +42,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/category/:name',
-                element: <Category></Category>,
+                element: <PrivateRoute><Category></Category></PrivateRoute>,
                 loader: ({ params }) => fetch(`https://recycled-books-server.vercel.app/category/${params.name}`)
             },
             {
