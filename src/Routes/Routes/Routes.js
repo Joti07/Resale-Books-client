@@ -10,6 +10,8 @@ import Category from "../../Pages/Categories/Category/Category";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import NotFoundPage from "../../Pages/NotFoundPage/NotFoundPage";
+import AddProduct from "../../Pages/SellerDashboard/AddProduct/AddProduct";
+import MyProducts from "../../Pages/SellerDashboard/MyProducts/MyProducts";
 import SignUp from "../../Pages/SignUp/SignUp";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import BuyerRoute from "../Buyer/Buyer";
@@ -63,23 +65,28 @@ const router = createBrowserRouter([
             {
                 path: '/admindashboard/allseller',
                 element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
-            }
+            },
+            // {
+            //     path: '/admindashboard/addproduct',
+            //     element: <SellerRoute><AddAProduct></AddAProduct></SellerRoute>
+
+            // }
 
         ]
 
     },
     {
         path: '/sellerdashboard',
-        element: <SellerRoute><AllUsers></AllUsers></SellerRoute>,
+        element: <SellerRoute><AdminLayout></AdminLayout></SellerRoute>,
         children: [
-            // {
-            //     path: '/dashboard',
-            //     element: <Home></Home>
-            // },
-            // {
-            //     path: '/dashboard/allusers',
-            //     element: <Home></Home>
-            // }
+            {
+                path: '/sellerdashboard/myproducts',
+                element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
+            },
+            {
+                path: '/sellerdashboard/addproduct',
+                element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
+            }
 
         ]
 

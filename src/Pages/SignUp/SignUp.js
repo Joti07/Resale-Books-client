@@ -30,7 +30,7 @@ const SignUp = () => {
     }
     const handleSignUp = (data) => {
         setSignUPError('');
-        createUser(data.email, data.password)
+        createUser(data.email, data.password, data.role)
             .then(result => {
                 const user = result.user;
                 // console.log(user);
@@ -40,7 +40,7 @@ const SignUp = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        saveUser(data.name, data.email);
+                        saveUser(data.name, data.email, data.role);
                     })
                     .catch(err => console.log(err));
             })
@@ -51,8 +51,8 @@ const SignUp = () => {
     }
 
 
-    const saveUser = (name, email) => {
-        const user = { name, email };
+    const saveUser = (name, email, role) => {
+        const user = { name, email, role };
         // console.log(role);
         fetch('http://localhost:5000/users', {
             method: 'POST',
