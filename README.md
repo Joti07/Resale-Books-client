@@ -4,7 +4,7 @@ adminPassword: @DMIN07
 
 live link: https://recycled-books.web.app/
 
-## Recycled Books
+## Resale Books
 ### Details:
 This website is related to selling used (second-hand products) with the ability to advertise a product.
 
