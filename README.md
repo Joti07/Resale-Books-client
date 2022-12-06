@@ -3,6 +3,7 @@ adminEmail: admin@gmail.com
 adminPassword: @DMIN07
 
 live link: https://recycled-books.web.app/
+server link: https://github.com/Joti07/Resale-Books-server
 
 ## Resale Books
 ### Details:
